@@ -11,8 +11,8 @@ function controller(routePrefix) {
             var routeHandler = target.prototype[key]; // assign method
             var path = Reflect.getMetadata('path', target.prototype, key); // get metadata
             var method = Reflect.getMetadata('method', target.prototype, key);
-            if (path && method === 'get') {
-                router.get("" + routePrefix + path, routeHandler);
+            if (path) {
+                router[method]("" + routePrefix + path, routeHandler);
             }
         }
     };
