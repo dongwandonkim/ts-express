@@ -8,7 +8,7 @@ var requireAuth = function (req, res, next) {
         return;
     }
     res.status(403);
-    res.send("\n      <div>\n        <div> You are not allowed</div>\n        <a href=\"/login\">login</a>\n      </div>\n    ");
+    res.send("\n      <div>\n        <div> You are not allowed</div>\n        <a href=\"/auth/login\">login</a>\n      </div>\n    ");
 };
 var router = express_1.Router();
 exports.router = router;
@@ -29,10 +29,10 @@ router.post('/login', function (req, res) {
 router.get('/', function (req, res) {
     var session = req.session;
     if (session && session.loggedIn) {
-        res.send("\n      <div>\n        <div> You are logged in</div>\n        <a href=\"/logout\">Logout</a>\n      </div>\n    ");
+        res.send("\n      <div>\n        <div> You are logged in</div>\n        <a href=\"/auth/logout\">Logout</a>\n      </div>\n    ");
     }
     else {
-        res.send("\n      <div>\n        <div> You are not logged in</div>\n        <a href=\"/login\">login</a>\n      </div>\n    ");
+        res.send("\n      <div>\n        <div> You are not logged in</div>\n        <a href=\"/auth/login\">login</a>\n      </div>\n    ");
     }
 });
 router.get('/logout', function (req, res) {
